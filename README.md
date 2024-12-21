@@ -19,6 +19,6 @@ URL: http://localhost/bookstore-php/eshop/app/admin/add_item_to_catalog.php
 URL: http://localhost/bookstore-php/eshop/app/admin/orders.php
 4) Добавление нового пользователя:
 URL: http://localhost/bookstore-php/eshop/app/admin/create_user.php
-Выход из системы (разлогин)
+5) Выход из системы (разлогин):
 URL: http://localhost/bookstore-php/eshop/app/admin/logout.php (перекидывает на login)
 
