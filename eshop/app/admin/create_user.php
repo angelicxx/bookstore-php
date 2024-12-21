@@ -1,17 +1,17 @@
 <h1>Добавить пользователя</h1>
-<p><a href='/admin'>Назад в админку</a></p>
-<form action="save_user" method="post">
+<p><a href='/bookstore-php/eshop/app/admin/admin.php'>Назад в админку</a></p>
+<form action="/bookstore-php/eshop/app/admin/save_user.php" method="post">
     <div>
-        <label>Логин:</label> 
-        <input type="text" name="login" size="25">
+        <label>Логин:</label>
+        <input type="text" name="username" required>
     </div>
     <div>
-        <label>Пароль:</label> 
-        <input type="password" name="password" size="25">
+        <label>Пароль:</label>
+        <input type="password" name="password" required>
     </div>
     <div>
-        <label>Email:</label> 
-        <input type="email" name="email" size="25">
+        <label>Email:</label>
+        <input type="email" name="email">
     </div>
     <div>
         <input type="submit" value="Создать">

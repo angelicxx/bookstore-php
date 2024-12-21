@@ -1,20 +1,50 @@
-<p>Вернуться в <a href='/catalog'>каталог</a></p>
+<?php
+require_once 'core/init.php'; // Подключаем инициализацию приложения
+Basket::init(); // Инициализация корзины
+
+$items = Basket::read();
+
+?>
+
+<p>Вернуться в <a href='/bookstore-php/eshop/catalog'>каталог</a></p>
 <h1>Ваша корзина</h1>
-<table>
-<tr>
-	<th>N п/п</th>
-	<th>Название</th>
-	<th>Автор</th>
-	<th>Год издания</th>
-	<th>Цена, руб.</th>
-	<th>Количество</th>
-	<th>Удалить</th>
-</tr>
-</table>
 
-<p>Всего товаров в корзине на сумму:   руб.</p>
+<?php if (!empty($items)): ?>
+    <table>
+        <tr>
+            <th>N п/п</th>
+            <th>ID товара</th>
+            <th>Количество</th>
+            <th>Удалить</th>
+        </tr>
 
-<div style="text-align:center">
-	<input type="button" value="Оформить заказ!"
-                      onclick="location.href='/create_order'" />
-</div>
+        <?php $i = 1; ?>
+        <?php foreach ($items as $id => $quantity): ?>
+            <tr>
+                <td><?= $i++ ?></td>
+                <td><?= htmlspecialchars($id) ?></td>
+                <td><?= htmlspecialchars($quantity) ?></td>
+                <td>
+                    <form action="/bookstore-php/eshop/remove_item_from_basket" method="post">
+                        <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
+                        <input type="submit" value="Удалить">
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <div style="text-align:center; margin-top: 20px;">
+        <h2>Оформить заказ</h2>
+        <form action="/bookstore-php/eshop/save_order" method="post">
+            <label>Имя: <input type="text" name="customer" required></label><br>
+            <label>Email: <input type="email" name="email" required></label><br>
+            <label>Телефон: <input type="text" name="phone" required></label><br>
+            <label>Адрес: <input type="text" name="address" required></label><br>
+            <input type="submit" value="Оформить заказ!">
+        </form>
+    </div>
+
+<?php else: ?>
+    <p>Корзина пуста.</p>
+<?php endif; ?>

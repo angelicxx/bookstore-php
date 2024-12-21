@@ -1,22 +1,31 @@
-<h1>Поступившие заказы:</h1>
-<a href='/admin'>Назад в админку</a>
-<hr>
-<h2>Заказ номер: </h2>
-<p><b>Заказчик</b>: </p>
-<p><b>Email</b>: </p>
-<p><b>Телефон</b>: </p>
-<p><b>Адрес доставки</b>: </p>
-<p><b>Дата размещения заказа</b>: </p>
+<?php
+require_once __DIR__ . '/../../core/init.php';
 
-<h3>Купленные товары:</h3>
-<table>
-<tr>
-	<th>N п/п</th>
-	<th>Название</th>
-	<th>Автор</th>
-	<th>Год издания</th>
-	<th>Цена, руб.</th>
-	<th>Количество</th>
-</tr>
-</table>
-<p>Всего товаров в заказе на сумму:  руб.</p>
+echo "<h1>Список заказов</h1>";
+echo "<table border='1'>";
+echo "<tr>
+        <th>ID</th>
+        <th>Имя клиента</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Адрес</th>
+        <th>Дата создания</th>
+      </tr>";
+
+try {
+    $orders = Eshop::getOrders();
+    foreach ($orders as $order) {
+        echo "<tr>
+                <td>{$order['id']}</td>
+                <td>{$order['customer']}</td>
+                <td>{$order['email']}</td>
+                <td>{$order['phone']}</td>
+                <td>{$order['address']}</td>
+                <td>{$order['datetime']}</td>
+              </tr>";
+    }
+} catch (Exception $e) {
+    echo "Ошибка: " . $e->getMessage();
+}
+
+echo "</table>";

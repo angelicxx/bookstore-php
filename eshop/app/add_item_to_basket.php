@@ -1,2 +1,15 @@
 <?php
-echo 'Добавление товара в корзину покупателя';
+require_once __DIR__ . '/../core/init.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'] ?? null;
+
+    if ($id) {
+        Basket::add($id);
+        header('Location: /bookstore-php/eshop/basket'); // Переадресация на страницу корзины
+        exit;
+    } else {
+        echo "Ошибка: ID товара не указан!";
+    }
+}
+?>

@@ -1,6 +1,10 @@
+
 <h1>Добавить товар в каталог</h1>
-<p><a href='/admin'>Назад в админку</a></p>    
+<p><a href='/bookstore-php/eshop/app/admin/admin.php'>Назад в админку</a></p>    
 <form action="save_item_to_catalog" method="post">
+
+
+
     <div>
         <label>Название:</label> 
         <input type="text" name="title" size="50">

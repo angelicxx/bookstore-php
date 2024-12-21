@@ -1,2 +1,6 @@
 <?php
-echo 'Для того, чтобы выйти, надо сначала зайти';
+require_once '../../core/init.php';
+Eshop::logOut();
+header("Location: /bookstore-php/eshop/login.php");
+exit;
+?>
