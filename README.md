@@ -22,3 +22,4 @@
 # Выход из системы (разлогин)
 # URL: http://localhost/bookstore-php/eshop/app/admin/logout.php (перекидывает на login)
 
+выполняла с помощью установки xampp
